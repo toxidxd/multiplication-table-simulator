@@ -1,5 +1,6 @@
 import random
 import time
+from operator import index
 
 
 def gen_mult_table() -> list[list[int]]:
@@ -13,8 +14,11 @@ def gen_mult_table() -> list[list[int]]:
 
 def gen_task_table(table: list[list[int]], count: int) -> list[list[int]]:
     result = list()
-    for _ in range(count):
-        result.append(table[random.randint(0, len(table) - 1)])
+    indexes = list(range(len(table)))
+    random.shuffle(indexes)
+    indexes = indexes[:count]
+    for i_index in indexes:
+        result.append(table[i_index])
 
     return result
 
