@@ -32,10 +32,10 @@ def main():
     task_table = gen_task_table(mult_table, tasks_count)
 
     start = time.time()
-    for task in task_table:
+    for num, task in enumerate(task_table):
         while True:
             try:
-                answer = int(input(f'{task[0]} * {task[1]} = '))
+                answer = int(input(f'{num + 1}) {task[0]} * {task[1]} = '))
                 if answer == task[0] * task[1]:
                     print(f'Правильно!')
                     break
