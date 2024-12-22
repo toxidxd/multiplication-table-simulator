@@ -1,6 +1,5 @@
 import random
 import time
-from operator import index
 
 
 def gen_mult_table() -> list[list[int]]:
