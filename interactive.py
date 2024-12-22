@@ -52,6 +52,8 @@ def main():
     print(f'Молодец, ты справился!\nКоличество ошибок: {errors_count}')
     print(f'Время выполнения: {elapsed_time} минут')
 
+    while True:
+        pass
 
 if __name__ == '__main__':
     main()
