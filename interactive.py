@@ -1,5 +1,5 @@
 import random
-
+import time
 
 def gen_mult_table():
     result = list()
@@ -20,6 +20,7 @@ def gen_task_table(table):
 
 mult_table = gen_mult_table()
 task_table = gen_task_table(mult_table)
+errors_count = 0
 
 print('Добро пожаловать в тренажер таблицы умножения!')
 
@@ -31,7 +32,10 @@ for task in task_table:
                 print(f'Правильно!')
                 break
             else:
+                errors_count +=1
                 print('Неправильно!')
 
         except ValueError as exc:
             print('Ответ должен быть числом!')
+
+print(f'Молодец, ты справился!\nКоличество ошибок: {errors_count}')
