@@ -10,14 +10,6 @@ def gen_mult_table() -> list[list[int]]:
 
     return result
 
-def gen_div_table() -> list[list[int]]:
-    result = list()
-    for x in range(2, 10):
-        for y in range(2, 10):
-            if x > y:
-             result.append([x, y])
-
-    return result
 
 def gen_task_table(table: list[list[int]], count: int) -> list[list[int]]:
     result = list()
@@ -28,6 +20,7 @@ def gen_task_table(table: list[list[int]], count: int) -> list[list[int]]:
         result.append(table[i_index])
 
     return result
+
 
 
 def multiplication():
@@ -67,7 +60,7 @@ def division():
     print('Добро пожаловать в тренажер деления!')
     tasks_count = int(input('Количество примеров: '))
 
-    div_table = gen_div_table()
+    div_table = gen_mult_table()
     errors_count = 0
     task_table = gen_task_table(div_table, tasks_count)
 
@@ -75,8 +68,8 @@ def division():
     for num, task in enumerate(task_table):
         while True:
             try:
-                answer = int(input(f'{num + 1}) {task[0]} / {task[1]} = '))
-                if answer == task[0] / task[1]:
+                answer = int(input(f'{num + 1}) {task[2]} / {task[0]} = '))
+                if answer == task[2] / task[0]:
                     print(f'Правильно!')
                     break
                 else:
