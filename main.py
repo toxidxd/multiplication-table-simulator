@@ -7,7 +7,6 @@ def gen_mult_table() -> list[list[int]]:
     for x in range(2, 10):
         for y in range(2, 10):
             result.append([x, y, x * y])
-
     return result
 
 
@@ -20,7 +19,6 @@ def gen_task_table(table: list[list[int]], count: int) -> list[list[int]]:
         result.append(table[i_index])
 
     return result
-
 
 
 def multiplication():
@@ -49,8 +47,7 @@ def multiplication():
     end = time.time()
     elapsed_time = (end - start) // 60
 
-    print(f'Молодец, ты справился!\nКоличество ошибок: {errors_count}')
-    print(f'Время выполнения: {elapsed_time} минут')
+    well_done(errors_count, elapsed_time)
 
     while True:
         pass
@@ -82,11 +79,15 @@ def division():
     end = time.time()
     elapsed_time = (end - start) // 60
 
-    print(f'Молодец, ты справился!\nКоличество ошибок: {errors_count}')
-    print(f'Время выполнения: {elapsed_time} минут')
+    well_done(errors_count, elapsed_time)
 
     while True:
         pass
+
+
+def well_done(errors, time):
+    print(f'Молодец, ты справился!\nКоличество ошибок: {errors}')
+    print(f'Время выполнения: {time} минут')
 
 
 def main():
