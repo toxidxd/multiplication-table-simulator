@@ -4,8 +4,8 @@ import time
 
 def gen_mult_table() -> list[list[int]]:
     result = list()
-    for x in range(2, 10):
-        for y in range(2, 10):
+    for x in range(3, 9):
+        for y in range(3, 9):
             result.append([x, y, x * y])
     return result
 
