@@ -42,7 +42,6 @@ def gen_task_table(count: int) -> list[list[int]]:
 
 
 def mix_tasks(tasks_count):
-    tasks_count = int(input('Количество примеров: '))
     errors_count = 0
     task_table = gen_task_table(tasks_count)
 
@@ -79,11 +78,11 @@ def mix_tasks(tasks_count):
 
     well_done(errors_count, elapsed_time)
 
-    input('Нажмите Enter для продолжения...')
+    if errors_count != 0:
+        additional_tasks(errors_count)
 
 
 def multiplication(tasks_count):
-    tasks_count = int(input('Количество примеров: '))
     errors_count = 0
     task_table = gen_task_table(tasks_count)
 
@@ -107,7 +106,8 @@ def multiplication(tasks_count):
 
     well_done(errors_count, elapsed_time)
 
-    input('Нажмите Enter для продолжения...')
+    if errors_count != 0:
+        additional_tasks(errors_count)
 
 
 def division(tasks_count):
@@ -134,16 +134,20 @@ def division(tasks_count):
 
     well_done(errors_count, elapsed_time)
 
-    input('Нажмите Enter для продолжения...')
+    if errors_count != 0:
+        additional_tasks(errors_count)
 
 
 def additional_tasks(errors_count):
-    ...
+    print(f'За ошибки в предыдущих заданиях ты будешь решать дополнительные примеры. ({errors_count * 2})')
+    choose_task(tasks_count=errors_count * 2)
 
-def choose_task():
+
+def choose_task(tasks_count=None):
     print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
     my_choice = int(input('Ваш выбор: '))
-    tasks_count = int(input('Количество примеров: '))
+    if tasks_count is None:
+        tasks_count = int(input('Количество примеров: '))
 
     if my_choice == 1:
         multiplication(tasks_count)
@@ -155,7 +159,6 @@ def choose_task():
         print('Неверный ввод!')
 
 
-
 def well_done(errors, elapsed_time):
     print(f'Молодец, ты справился!\nКоличество ошибок: {errors}\nВремя выполнения: {elapsed_time} минут')
 
@@ -164,8 +167,9 @@ def well_done(errors, elapsed_time):
 
 def main():
     print('Добро пожаловать в тренажер таблицы умножения и деления!')
-    print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
     choose_task()
+
+    input('Нажмите Enter для продолжения...')
 
 
 if __name__ == '__main__':
