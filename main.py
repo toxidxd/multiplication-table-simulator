@@ -42,10 +42,10 @@ def gen_task_table(count: int) -> list[list[int]]:
 
 
 def mix_tasks(tasks_count):
+    logger.info(f'{mix_tasks.__name__} | Начало задания на смешанные примеры')
     errors_count = 0
     task_table = gen_task_table(tasks_count)
 
-    start = time.time()
     for num, task in enumerate(task_table):
         while True:
             try:
@@ -74,19 +74,17 @@ def mix_tasks(tasks_count):
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
+        print(f'Количество ошибок: {errors_count}')
+        logger.info(f'{mix_tasks.__name__} | Количество ошибок: {errors_count}')
         additional_tasks(choice=3, errors_count=errors_count)
 
-    else:
-        end = time.time()
-        elapsed_time = (end - start) // 60
-        well_done(errors_count, elapsed_time)
 
 
 def multiplication(tasks_count):
+    logger.info(f'{multiplication.__name__} | Начало задания на умножение')
     errors_count = 0
     task_table = gen_task_table(tasks_count)
 
-    start = time.time()
     for num, task in enumerate(task_table):
         while True:
             try:
@@ -102,19 +100,18 @@ def multiplication(tasks_count):
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
+        print(f'Количество ошибок: {errors_count}')
+        logger.info(f'{multiplication.__name__} | Количество ошибок: {errors_count}')
         additional_tasks(choice=1, errors_count=errors_count)
 
-    else:
-        end = time.time()
-        elapsed_time = (end - start) // 60
-        well_done(errors_count, elapsed_time)
 
 
 def division(tasks_count):
+    logger.info(f'{division.__name__} | Начало задания на деление')
+
     errors_count = 0
     task_table = gen_task_table(tasks_count)
 
-    start = time.time()
     for num, task in enumerate(task_table):
         while True:
             try:
@@ -130,16 +127,14 @@ def division(tasks_count):
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
+        print(f'Количество ошибок: {errors_count}')
+        logger.info(f'{division.__name__} | Количество ошибок: {errors_count}')
         additional_tasks(choice=2, errors_count=errors_count)
-
-    else:
-        end = time.time()
-        elapsed_time = (end - start) // 60
-        well_done(errors_count, elapsed_time)
 
 
 def additional_tasks(choice, errors_count):
     print(f'За ошибки в предыдущих заданиях ты будешь решать дополнительные примеры. ({errors_count * 2})')
+    logger.info(f'{additional_tasks.__name__} | Дополнительные примеры: {errors_count * 2}')
     start_task(my_choice=choice, tasks_count=errors_count * 2)
 
 
@@ -147,8 +142,10 @@ def start_task(my_choice=None, tasks_count=None):
     if my_choice is None:
         print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
         my_choice = int(input('Ваш выбор: '))
+        logger.info(f'{start_task.__name__} | Выбрано задание: {my_choice}')
     if tasks_count is None:
         tasks_count = int(input('Количество примеров: '))
+        logger.info(f'{start_task.__name__} | Количество примеров: {tasks_count}')
 
     if my_choice == 1:
         multiplication(tasks_count)
@@ -160,22 +157,19 @@ def start_task(my_choice=None, tasks_count=None):
         print('Неверный ввод!')
 
 
-def well_done(errors, elapsed_time):
-    print(f'Молодец, ты справился!\nКоличество ошибок: {errors}\nВремя выполнения: {elapsed_time} минут')
 
-    logger.info(f'Количество ошибок: {errors}. Время выполнения: {elapsed_time} минут')
 
 
 def main():
     print('Добро пожаловать в тренажер таблицы умножения и деления!')
-    errors_count = 0
     start = time.time()
 
     start_task()
 
     end = time.time()
     elapsed_time = (end - start) // 60
-    well_done(errors_count, elapsed_time)
+
+    print(f'Время выполнения: {elapsed_time} минут')
 
     input('Нажмите Enter для продолжения...')
 
