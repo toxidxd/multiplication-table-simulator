@@ -76,7 +76,7 @@ def mix_tasks():
                         print('Неправильно!')
 
 
-            except ValueError as exc:
+            except ValueError:
                 print('Ответ должен быть числом!')
 
     end = time.time()
@@ -106,7 +106,7 @@ def multiplication():
                     errors_count += 1
                     print('Неправильно!')
 
-            except ValueError as exc:
+            except ValueError:
                 print('Ответ должен быть числом!')
 
     end = time.time()
@@ -136,7 +136,7 @@ def division():
                     errors_count += 1
                     print('Неправильно!')
 
-            except ValueError as exc:
+            except ValueError:
                 print('Ответ должен быть числом!')
 
     end = time.time()
@@ -147,10 +147,10 @@ def division():
     input('Нажмите Enter для продолжения...')
 
 
-def well_done(errors, time):
-    print(f'Молодец, ты справился!\nКоличество ошибок: {errors}\nВремя выполнения: {time} минут')
+def well_done(errors, elapsed_time):
+    print(f'Молодец, ты справился!\nКоличество ошибок: {errors}\nВремя выполнения: {elapsed_time} минут')
 
-    logger.info(f'Количество ошибок: {errors}. Время выполнения: {time} минут')
+    logger.info(f'Количество ошибок: {errors}. Время выполнения: {elapsed_time} минут')
 
 
 def main():
