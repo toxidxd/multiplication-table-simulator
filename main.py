@@ -33,23 +33,18 @@ def gen_mult_table() -> list[list[int]]:
     return result
 
 
-def gen_task_table(table: list[list[int]], count: int) -> list[list[int]]:
-    result = list()
-    indexes = list(range(len(table)))
+def gen_task_table(count: int) -> list[list[int]]:
+    mul_table = gen_mult_table()
+    indexes = list(range(len(mul_table)))
     random.shuffle(indexes)
     indexes = indexes[:count]
-    for i_index in indexes:
-        result.append(table[i_index])
-
-    return result
+    return [mul_table[i_index] for i_index in indexes]
 
 
 def mix_tasks():
     tasks_count = int(input('Количество примеров: '))
-
-    div_table = gen_mult_table()
     errors_count = 0
-    task_table = gen_task_table(div_table, tasks_count)
+    task_table = gen_task_table(tasks_count)
 
     start = time.time()
     for num, task in enumerate(task_table):
@@ -89,10 +84,8 @@ def mix_tasks():
 
 def multiplication():
     tasks_count = int(input('Количество примеров: '))
-
-    mult_table = gen_mult_table()
     errors_count = 0
-    task_table = gen_task_table(mult_table, tasks_count)
+    task_table = gen_task_table(tasks_count)
 
     start = time.time()
     for num, task in enumerate(task_table):
@@ -119,10 +112,8 @@ def multiplication():
 
 def division():
     tasks_count = int(input('Количество примеров: '))
-
-    div_table = gen_mult_table()
     errors_count = 0
-    task_table = gen_task_table(div_table, tasks_count)
+    task_table = gen_task_table(tasks_count)
 
     start = time.time()
     for num, task in enumerate(task_table):
