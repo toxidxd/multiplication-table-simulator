@@ -1,5 +1,25 @@
 import random
 import time
+import logging
+# import sys
+
+
+logging.basicConfig(level='INFO')
+logger = logging.getLogger(name='result_log')
+logger.propagate = False
+
+# custom_handler = logging.StreamHandler(stream=sys.stdout)
+formatter = logging.Formatter(
+    fmt="%(asctime)s | %(message)s",
+    datefmt='%Y-%m-%d %H:%M:%S',
+)
+# custom_handler.setFormatter(formatter)
+
+file_handler = logging.FileHandler(filename='Результаты тренажера по умножению.txt', encoding='utf-8')
+file_handler.setFormatter(formatter)
+
+logger.addHandler(file_handler)
+# logger.addHandler(custom_handler)
 
 
 def gen_mult_table() -> list[list[int]]:
@@ -60,8 +80,7 @@ def mix_tasks():
 
     well_done(errors_count, elapsed_time)
 
-    while True:
-        pass
+    input('Нажмите Enter для продолжения...')
 
 
 def multiplication():
@@ -91,8 +110,7 @@ def multiplication():
 
     well_done(errors_count, elapsed_time)
 
-    while True:
-        pass
+    input('Нажмите Enter для продолжения...')
 
 
 def division():
@@ -122,13 +140,13 @@ def division():
 
     well_done(errors_count, elapsed_time)
 
-    while True:
-        pass
+    input('Нажмите Enter для продолжения...')
 
 
 def well_done(errors, time):
-    print(f'Молодец, ты справился!\nКоличество ошибок: {errors}')
-    print(f'Время выполнения: {time} минут')
+    print(f'Молодец, ты справился!\nКоличество ошибок: {errors}\nВремя выполнения: {time} минут')
+
+    logger.info(f'Количество ошибок: {errors}. Время выполнения: {time} минут')
 
 
 def main():
