@@ -1,6 +1,7 @@
+import logging
 import random
 import time
-import logging
+
 # import sys
 
 
@@ -19,6 +20,8 @@ file_handler = logging.FileHandler(filename='Результаты тренаже
 file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
+
+
 # logger.addHandler(custom_handler)
 
 
@@ -39,6 +42,7 @@ def gen_task_table(table: list[list[int]], count: int) -> list[list[int]]:
         result.append(table[i_index])
 
     return result
+
 
 def mix_tasks():
     tasks_count = int(input('Количество примеров: '))
