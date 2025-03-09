@@ -74,7 +74,7 @@ def mix_tasks(tasks_count):
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
-        additional_tasks(errors_count)
+        additional_tasks(choice=3, errors_count=errors_count)
 
     else:
         end = time.time()
@@ -102,7 +102,7 @@ def multiplication(tasks_count):
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
-        additional_tasks(errors_count)
+        additional_tasks(choice=1, errors_count=errors_count)
 
     else:
         end = time.time()
@@ -130,7 +130,7 @@ def division(tasks_count):
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
-        additional_tasks(errors_count)
+        additional_tasks(choice=2, errors_count=errors_count)
 
     else:
         end = time.time()
@@ -138,14 +138,15 @@ def division(tasks_count):
         well_done(errors_count, elapsed_time)
 
 
-def additional_tasks(errors_count):
+def additional_tasks(choice, errors_count):
     print(f'За ошибки в предыдущих заданиях ты будешь решать дополнительные примеры. ({errors_count * 2})')
-    choose_task(tasks_count=errors_count * 2)
+    start_task(my_choice=choice, tasks_count=errors_count * 2)
 
 
-def choose_task(tasks_count=None):
-    print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
-    my_choice = int(input('Ваш выбор: '))
+def start_task(my_choice=None, tasks_count=None):
+    if my_choice is None:
+        print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
+        my_choice = int(input('Ваш выбор: '))
     if tasks_count is None:
         tasks_count = int(input('Количество примеров: '))
 
@@ -167,7 +168,14 @@ def well_done(errors, elapsed_time):
 
 def main():
     print('Добро пожаловать в тренажер таблицы умножения и деления!')
-    choose_task()
+    errors_count = 0
+    start = time.time()
+
+    start_task()
+
+    end = time.time()
+    elapsed_time = (end - start) // 60
+    well_done(errors_count, elapsed_time)
 
     input('Нажмите Enter для продолжения...')
 
