@@ -41,7 +41,7 @@ def gen_task_table(count: int) -> list[list[int]]:
     return [mul_table[i_index] for i_index in indexes]
 
 
-def mix_tasks():
+def mix_tasks(tasks_count):
     tasks_count = int(input('Количество примеров: '))
     errors_count = 0
     task_table = gen_task_table(tasks_count)
@@ -82,7 +82,7 @@ def mix_tasks():
     input('Нажмите Enter для продолжения...')
 
 
-def multiplication():
+def multiplication(tasks_count):
     tasks_count = int(input('Количество примеров: '))
     errors_count = 0
     task_table = gen_task_table(tasks_count)
@@ -110,8 +110,7 @@ def multiplication():
     input('Нажмите Enter для продолжения...')
 
 
-def division():
-    tasks_count = int(input('Количество примеров: '))
+def division(tasks_count):
     errors_count = 0
     task_table = gen_task_table(tasks_count)
 
@@ -138,6 +137,25 @@ def division():
     input('Нажмите Enter для продолжения...')
 
 
+def additional_tasks(errors_count):
+    ...
+
+def choose_task():
+    print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
+    my_choice = int(input('Ваш выбор: '))
+    tasks_count = int(input('Количество примеров: '))
+
+    if my_choice == 1:
+        multiplication(tasks_count)
+    elif my_choice == 2:
+        division(tasks_count)
+    elif my_choice == 3:
+        mix_tasks(tasks_count)
+    else:
+        print('Неверный ввод!')
+
+
+
 def well_done(errors, elapsed_time):
     print(f'Молодец, ты справился!\nКоличество ошибок: {errors}\nВремя выполнения: {elapsed_time} минут')
 
@@ -147,15 +165,7 @@ def well_done(errors, elapsed_time):
 def main():
     print('Добро пожаловать в тренажер таблицы умножения и деления!')
     print('Выберите задание \n\t1 - умножение\n\t2 - деление\n\t3 - смешанные задания')
-    my_choice = int(input('Ваш выбор: '))
-    if my_choice == 1:
-        multiplication()
-    elif my_choice == 2:
-        division()
-    elif my_choice == 3:
-        mix_tasks()
-    else:
-        print('Неверный ввод!')
+    choose_task()
 
 
 if __name__ == '__main__':
