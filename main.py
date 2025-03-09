@@ -73,13 +73,13 @@ def mix_tasks(tasks_count):
             except ValueError:
                 print('Ответ должен быть числом!')
 
-    end = time.time()
-    elapsed_time = (end - start) // 60
-
-    well_done(errors_count, elapsed_time)
-
     if errors_count != 0:
         additional_tasks(errors_count)
+
+    else:
+        end = time.time()
+        elapsed_time = (end - start) // 60
+        well_done(errors_count, elapsed_time)
 
 
 def multiplication(tasks_count):
@@ -101,13 +101,13 @@ def multiplication(tasks_count):
             except ValueError:
                 print('Ответ должен быть числом!')
 
-    end = time.time()
-    elapsed_time = (end - start) // 60
-
-    well_done(errors_count, elapsed_time)
-
     if errors_count != 0:
         additional_tasks(errors_count)
+
+    else:
+        end = time.time()
+        elapsed_time = (end - start) // 60
+        well_done(errors_count, elapsed_time)
 
 
 def division(tasks_count):
@@ -129,13 +129,13 @@ def division(tasks_count):
             except ValueError:
                 print('Ответ должен быть числом!')
 
-    end = time.time()
-    elapsed_time = (end - start) // 60
-
-    well_done(errors_count, elapsed_time)
-
     if errors_count != 0:
         additional_tasks(errors_count)
+
+    else:
+        end = time.time()
+        elapsed_time = (end - start) // 60
+        well_done(errors_count, elapsed_time)
 
 
 def additional_tasks(errors_count):
