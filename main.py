@@ -16,7 +16,8 @@ formatter = logging.Formatter(
 )
 # custom_handler.setFormatter(formatter)
 
-file_handler = logging.FileHandler(filename='Результаты тренажера по умножению.txt', encoding='utf-8')
+file_handler = logging.FileHandler(
+    filename='Результаты тренажера по умножению.txt', encoding='utf-8')
 file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
@@ -69,15 +70,14 @@ def mix_tasks(tasks_count):
                         errors_count += 1
                         print('Неправильно!')
 
-
             except ValueError:
                 print('Ответ должен быть числом!')
 
     if errors_count != 0:
         print(f'Количество ошибок: {errors_count}')
-        logger.info(f'{mix_tasks.__name__} | Количество ошибок: {errors_count}')
+        logger.info(
+            f'{mix_tasks.__name__} | Количество ошибок: {errors_count}')
         additional_tasks(choice=3, errors_count=errors_count)
-
 
 
 def multiplication(tasks_count):
@@ -101,9 +101,9 @@ def multiplication(tasks_count):
 
     if errors_count != 0:
         print(f'Количество ошибок: {errors_count}')
-        logger.info(f'{multiplication.__name__} | Количество ошибок: {errors_count}')
+        logger.info(
+            f'{multiplication.__name__} | Количество ошибок: {errors_count}')
         additional_tasks(choice=1, errors_count=errors_count)
-
 
 
 def division(tasks_count):
@@ -133,8 +133,10 @@ def division(tasks_count):
 
 
 def additional_tasks(choice, errors_count):
-    print(f'За ошибки в предыдущих заданиях ты будешь решать дополнительные примеры. ({errors_count * 2})')
-    logger.info(f'{additional_tasks.__name__} | Дополнительные примеры: {errors_count * 2}')
+    print(
+        f'За ошибки в предыдущих заданиях ты будешь решать дополнительные примеры. ({errors_count * 2})')
+    logger.info(
+        f'{additional_tasks.__name__} | Дополнительные примеры: {errors_count * 2}')
     start_task(my_choice=choice, tasks_count=errors_count * 2)
 
 
@@ -145,7 +147,8 @@ def start_task(my_choice=None, tasks_count=None):
         logger.info(f'{start_task.__name__} | Выбрано задание: {my_choice}')
     if tasks_count is None:
         tasks_count = int(input('Количество примеров: '))
-        logger.info(f'{start_task.__name__} | Количество примеров: {tasks_count}')
+        logger.info(
+            f'{start_task.__name__} | Количество примеров: {tasks_count}')
 
     if my_choice == 1:
         multiplication(tasks_count)
@@ -155,9 +158,6 @@ def start_task(my_choice=None, tasks_count=None):
         mix_tasks(tasks_count)
     else:
         print('Неверный ввод!')
-
-
-
 
 
 def main():
