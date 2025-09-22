@@ -1,11 +1,5 @@
 import random
 
-dev_list = [
-    [
-
-    ]
-]
-
 
 def get_multiplication():
     one = random.randint(2, 20)
