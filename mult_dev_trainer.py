@@ -3,7 +3,7 @@ import random
 
 def get_multiplication():
     one = random.randint(2, 20)
-    two = random.randint(2, 5)
+    two = random.randint(3, 10)
     return one, two
 
 
@@ -34,13 +34,13 @@ def get_division():
 
 
 def get_task():
-    sign = random.choice(['*', '/'])
+    sign = random.choice(['*', ':'])
     if sign == '*':
         one, two = get_multiplication()
         result = one * two
         return one, two, sign, result
 
-    elif sign == '/':
+    elif sign == ':':
         one, two = get_division()
         result = one / two
         return one, two, sign, result
@@ -50,9 +50,8 @@ def main():
     wrong = 0
     for i in range(40):
         one, two, sign, result = get_task()
-
-        input(f'{one} {sign} {two} = ')
-        if result == int(result):
+        my_result = input(f'{one} {sign} {two} = ')
+        if result == int(my_result):
             print('Верно')
         else:
             print('Неверно')
