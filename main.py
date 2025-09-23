@@ -28,8 +28,8 @@ logger.addHandler(file_handler)
 
 def gen_mult_table() -> list[list[int]]:
     result = list()
-    for x in range(3, 9):
-        for y in range(3, 9):
+    for x in range(3, 20):
+        for y in range(3, 20):
             result.append([x, y, x * y])
     return result
 
